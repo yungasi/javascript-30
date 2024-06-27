@@ -1,0 +1,82 @@
+html {
+    box-sizing: border-box;
+    background: #ffc600;
+    font-family: 'helvetica neue';
+    font-size: 20px;
+    font-weight: 200;
+}
+
+body {
+    margin: 0;  
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.panels {
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+}
+
+.panel {
+    background: #6B0F9C;
+    box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
+    color: white;
+    text-align: center;
+    align-items: center;
+    /* Safari transitionend event.propertyName === flex */
+    /* Chrome + FF transitionend event.propertyName === flex-grow */
+    transition:
+        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        flex 0.4s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        background 0.2s;
+    font-size: 20px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    filter: brightness(70%);
+}
+
+.panel1 { background-image:url(https://i.pinimg.com/736x/ca/9a/3e/ca9a3e6c014ed8094d8e8786eb744bcf.jpg); }
+.panel2 { background-image:url(https://i.pinimg.com/736x/b7/e3/08/b7e3085f90a448e82137a8b5fa4861b6.jpg); }
+.panel3 { background-image:url(https://i.pinimg.com/736x/8a/57/f4/8a57f40487d680c4aa45b15e6057b115.jpg); }
+.panel4 { background-image:url(https://i.pinimg.com/736x/b7/75/5f/b7755f3812c9930afd4790f73358644d.jpg); }
+.panel5 { background-image:url(https://i.pinimg.com/736x/f2/b0/a2/f2b0a2598e7711aeb9aeded7753fe86b.jpg); }
+
+/* Flex Children */
+.panel > * {
+    margin: 0;
+    width: 100%;
+    transition: transform 0.5s;
+}
+
+.panel > *:first-child { transform: translateY(calc(-50vh)); }
+.panel > *:first-child.child-active { transform: translateY(calc(0vh)); }
+.panel > *:last-child { transform: translateY(calc(50vh)); }
+.panel > *:last-child.child-active { transform: translateY(calc(0vh)); }
+
+.panel p {
+    text-transform: uppercase;
+    font-family: 'Amatic SC', cursive;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+    font-size: 2em;
+}
+
+.panel p:nth-child(2) {
+    font-size: 4em;
+}
+
+.panel.open {
+    font-size: 40px;
+}
+
+.active {
+    filter: brightness(100%);
+    flex: 3;
+}
